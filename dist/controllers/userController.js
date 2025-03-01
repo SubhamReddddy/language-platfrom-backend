@@ -50,6 +50,12 @@ export const userLogin = catchAsync(async (req, res, next) => {
         data,
     });
 });
+export const getUserDetails = catchAsync(async (req, res, next) => {
+    res.status(200).json({
+        success: true,
+        user: req.user,
+    });
+});
 export const userLogout = catchAsync(async (req, res, next) => {
     res
         .status(200)

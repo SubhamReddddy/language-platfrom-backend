@@ -40,7 +40,6 @@ export const errorHandlerMiddleware = (
       message = `Invalid ${err.path}: ${err.value}`;
       status = 400;
     }
-
     // Handle Other Known Errors
     else if (err.statusCode) {
       status = err.statusCode;

@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { createToken } from "../utils/Token.js";
 import { catchAsync } from "../utils/catchAsync.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
+import { AuthRequest } from "../Features/Auth.js";
 
 export const userRegister = catchAsync(async (req, res, next) => {
   const { username, email, password }: IUser = req.body;
@@ -62,6 +63,15 @@ export const userLogin = catchAsync(async (req, res, next) => {
       data,
     });
 });
+
+export const getUserDetails = catchAsync(
+  async (req: AuthRequest, res, next) => {
+    res.status(200).json({
+      success: true,
+      user: req.user,
+    });
+  }
+);
 
 export const userLogout = catchAsync(async (req, res, next) => {
   res
