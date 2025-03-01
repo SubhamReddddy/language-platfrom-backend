@@ -11,7 +11,7 @@ export const addtask = catchAsync(async (req: AuthRequest, res, next) => {
     { upsert: true, new: true, setDefaultsOnInsert: true }
   );
   res.status(200).json({
-    task,
+    tasks: task,
   });
 });
 

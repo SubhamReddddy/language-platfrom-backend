@@ -5,7 +5,7 @@ export const addtask = catchAsync(async (req, res, next) => {
     const { data, result } = req.body;
     const task = await taskModel.findOneAndUpdate({ userID: req.user?._id }, { $push: { carrier: { task: data, ans: result } } }, { upsert: true, new: true, setDefaultsOnInsert: true });
     res.status(200).json({
-        task,
+        tasks: task,
     });
 });
 export const getalltask = catchAsync(async (req, res, next) => {
